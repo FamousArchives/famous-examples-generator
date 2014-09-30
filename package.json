@@ -1,0 +1,39 @@
+{
+  "name": "famous-examples-generator",
+  "version": "0.0.0",
+  "description": "Generate Templates for Famous Examples",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/famous/famous-examples-generator.git"
+  },
+  "scripts": {
+    "test": "npm run-script lint && tap test/*.js",
+    "watch": "nodemon --ignore node_modules/ -e js,json --exec 'npm test'",
+    "lint": "eslint **/*.js"
+  },
+  "author": "Myles Borins <myles@famo.us>",
+  "devDependencies": {
+    "eslint": "^0.8.2",
+    "nodemon": "^1.2.1",
+    "tap": "^0.4.12"
+  },
+  "dependencies": {
+    "minimist": "^1.1.0"
+  },
+  "bin": {
+    "famous-examples-generator": "bin/cmd.js"
+  },
+  "preferGlobal": "true",
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "test": "./test"
+  },
+  "readme": "README.markdown",
+  "engines": {
+    "node": ">=0.10.28",
+    "npm": ">=1.4.10"
+  },
+  "license": "TBD"
+}
