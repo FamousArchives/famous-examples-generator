@@ -8,15 +8,15 @@ var test = require('tape');
 var path = require('path');
 var os = require('os');
 var fs = require('fs');
+var spawn = require('child_process').spawn;
 
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 
 var examplesPath = path.join(__dirname, 'fixtures', 'examples');
-var tmpdir = path.join(os.tmpdir(), 'famous-examples-generator', 'test-template-examples');
-var templateExamples = require('../lib/template-examples');
+var tmpdir = path.join(os.tmpdir(), 'famous-examples-generator', 'test-bin');
 
-test('test-template-examples: setup', function (t) {
+test('test-bin: setup', function (t) {
   t.plan(2);
   mkdirp(tmpdir, function (err) {
     t.notok(err, 'the temp directory should be made without an error');
@@ -25,14 +25,25 @@ test('test-template-examples: setup', function (t) {
   });
 });
 
-test('test-template-examples:', function (t) {
-  t.plan(1);
-  templateExamples(examplesPath, tmpdir, function (err) {
-    t.notok(err, 'should return values without an error');
+test('test-bin:', function (t) {
+  t.plan(3);
+
+  var binPath = path.resolve(__dirname, '../bin/cmd.js');
+  var ps = spawn(binPath, ['-i', examplesPath, '-o', tmpdir]);
+  var stdout = '';
+  var stderr = '';
+  ps.stdout.on('data', function (buf) { stdout += buf; });
+  ps.stderr.on('data', function (buf) { stderr += buf; });
+
+  ps.on('exit', function (code) {
+    t.equal(code, 0);
+    t.equal(stderr, '');
+    t.equal(stdout, 'All Done!\n');
   });
 });
 
-test('test-template-examples: teardown', function (t) {
+
+test('test-bin: teardown', function (t) {
   t.plan(2);
   rimraf(tmpdir, function (err) {
     t.notok(err, 'the temp directory should be removed without an error');
