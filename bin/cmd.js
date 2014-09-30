@@ -9,9 +9,16 @@
 'use strict';
 
 var argv = require('minimist')(process.argv.slice(2));
-var lib = require('../lib');
+var exampleGenerator = require('../lib');
 
-console.log('argv:', argv);
-console.log('lib:', lib);
+var examplePath = argv.i;
+var outPath = argv.o || examplePath;
 
-process.exit(0);
+exampleGenerator.templateExamples(examplePath, outPath, function (err) {
+  if (err) {
+    console.error(new Error(err));
+    process.exit(1);
+  }
+  console.log('All Done!');
+  process.exit(0);
+});
