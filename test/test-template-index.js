@@ -14,7 +14,7 @@ var rimraf = require('rimraf');
 
 var examplesPath = path.join(__dirname, 'fixtures', 'examples');
 var tmpdir = path.join(os.tmpdir(), 'famous-examples-generator', 'test-template-index');
-var templateIndex = require('../lib/template-examples');
+var templateIndex = require('../lib/template-index');
 
 test('test-template-index: setup', function (t) {
   t.plan(2);
