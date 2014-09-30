@@ -25,7 +25,7 @@ test('test-bin: setup', function (t) {
   });
 });
 
-test('test-bin:', function (t) {
+test('test-bin: two args', function (t) {
   t.plan(3);
 
   var binPath = path.resolve(__dirname, '../bin/cmd.js');
@@ -42,6 +42,22 @@ test('test-bin:', function (t) {
   });
 });
 
+test('test-bin: one arg', function (t) {
+  t.plan(3);
+
+  var binPath = path.resolve(__dirname, '../bin/cmd.js');
+  var ps = spawn(binPath, ['-i', examplesPath]);
+  var stdout = '';
+  var stderr = '';
+  ps.stdout.on('data', function (buf) { stdout += buf; });
+  ps.stderr.on('data', function (buf) { stderr += buf; });
+
+  ps.on('exit', function (code) {
+    t.equal(code, 0);
+    t.equal(stderr, '');
+    t.equal(stdout, 'All Done!\n');
+  });
+});
 
 test('test-bin: teardown', function (t) {
   t.plan(2);
