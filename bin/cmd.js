@@ -7,14 +7,18 @@
 /*eslint no-process-exit:0*/
 
 'use strict';
-
 var argv = require('minimist')(process.argv.slice(2));
+var async = require('async');
+
 var exampleGenerator = require('../lib');
 
 var examplePath = argv.i;
 var outPath = argv.o || examplePath;
 
-exampleGenerator.templateExamples(examplePath, outPath, function (err) {
+async.parallel([
+  exampleGenerator.templateExamples.bind(null, examplePath, outPath),
+  exampleGenerator.templateIndex.bind(null, examplePath, outPath)
+], function (err) {
   if (err) {
     console.error(new Error(err));
     process.exit(1);
