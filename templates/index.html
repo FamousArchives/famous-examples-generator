@@ -12,11 +12,10 @@
         <link rel="stylesheet" type="text/css" href="<%= examplesPath %>/assets/css/famous_styles.css" />
     </head>
     <body>
-    <% _.each(output, function (files, key) { %>
-        <h1> <%= key %> </h1>
-        <% _.each(files, function (file) { %>
-            <li><a href='<%= file %>'><%= file %></a></li>
-        <% }); %>
-    <% }); %>
+        <% _.each(data, function (files, key) { %><h1 class="centered"><%= key %></h1>
+            <ul>
+            <% _.each(files.sort(), function (file) { %>   <li class="centered"><a href="<%= file %>.html"><%= file %></a></li>
+            <% }) %></ul>
+        <% }) %>
     </body>
 </html>
