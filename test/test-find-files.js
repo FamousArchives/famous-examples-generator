@@ -6,13 +6,19 @@
 
 var test = require('tape');
 var path = require('path');
+var _ = require('lodash');
 
 var findFiles = require('../lib/find-files');
 var fileList = require('./fixtures/file-list-array');
 
+var examplesPath = path.join(__dirname, 'fixtures/examples');
+
+fileList = _.map(fileList, function (file) {
+  return path.join(examplesPath, file);
+});
+
 test('find-files:', function (t) {
   t.plan(2);
-  var examplesPath = path.join(__dirname, 'fixtures/examples');
   findFiles(examplesPath, function (err, files) {
     t.notok(err, 'should return values without an error');
     t.deepEqual(files.sort(), fileList.sort(), 'values should return with relative paths to src and without extensions');
