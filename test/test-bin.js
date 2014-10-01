@@ -46,7 +46,7 @@ test('test-bin: one arg', function (t) {
   t.plan(3);
 
   var binPath = path.resolve(__dirname, '../bin/cmd.js');
-  var ps = spawn(binPath, ['-i', examplesPath]);
+  var ps = spawn(binPath, ['-i', tmpdir]);
   var stdout = '';
   var stderr = '';
   ps.stdout.on('data', function (buf) { stdout += buf; });
