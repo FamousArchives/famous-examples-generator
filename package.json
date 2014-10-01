@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/famous/famous-examples-generator.git"
+    "url": "git://github.com/FamousTools/famous-examples-generator.git"
   },
   "scripts": {
     "test": "npm run-script lint && tape test/test-*.js | tap-spec",
