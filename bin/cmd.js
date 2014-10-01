@@ -17,7 +17,8 @@ var outPath = argv.o || examplePath;
 
 async.parallel([
   exampleGenerator.templateExamples.bind(null, examplePath, outPath),
-  exampleGenerator.templateIndex.bind(null, examplePath, outPath)
+  exampleGenerator.templateIndex.bind(null, examplePath, outPath),
+  exampleGenerator.copyAssets.bind(null, outPath)
 ], function (err) {
   if (err) {
     console.error(new Error(err));
