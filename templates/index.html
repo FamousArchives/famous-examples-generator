@@ -10,12 +10,30 @@
         <link rel="stylesheet" type="text/css" href="<%= famousPath %>/core/famous.css" />
         <link rel="stylesheet" type="text/css" href="<%= examplesPath %>/assets/css/app.css" />
         <link rel="stylesheet" type="text/css" href="<%= examplesPath %>/assets/css/famous_styles.css" />
+        <style>
+            #logo { width: 100px; }
+        </style>
     </head>
-    <body>
-        <% _.each(data, function (files, key) { %><h1 class="centered"><%= key %></h1>
-            <ul>
-            <% _.each(files.sort(), function (file) { %>   <li class="centered"><a href="<%= file %>.html"><%= file %></a></li>
-            <% }) %></ul>
+    <body class="col1 pad-l-g1 spacer">
+        <a class="pad-l1-4 left col1 pad-b2" href="http://famo.us">
+            <img id="logo" src="<%= examplesPath %>/assets/img/famous.svg"/>
+        </a>
+        <h3 class="pad-l1-4 left">Famo.us Examples</h3>
+        </p>
+        <% _.each(data, function (files, key) { %>
+            <h3 class="pad-l1-4 col1">
+                <%= key %>
+            </h3>
+            <ul class="col1 pad-l1-4 marl-0">
+            <% _.each(_.sortBy(files, "url"), function (file) { %>   
+                <li class="col1">
+                    <a class="left miniSpacer col1" href="<%= file.url %>.html">
+                        <span class="left col1-4"><%= file.module %></span>
+                        <span class="left col3-4"><%= file.name %></span>
+                    </a>
+                </li>
+            <% }) %>
+            </ul>
         <% }) %>
     </body>
 </html>
