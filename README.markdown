@@ -2,7 +2,7 @@
 
 #####Generate Templates for Famous Examples
 
-[![Build Status](https://travis-ci.org/Famous/famous-examples-generator.svg?branch=master)](https://travis-ci.org/Famous/famous-examples-generator) [![Dependency Status](https://david-dm.org/Famous/famous-examples-generator.svg)](https://david-dm.org/Famous/famous-examples-generator) [![devDependency Status](https://david-dm.org/Famous/famous-examples-generator/dev-status.svg)](https://david-dm.org/Famous/famous-examples-generator#info=devDependencies)
+[![Build Status](https://travis-ci.org/FamousTools/famous-examples-generator.svg?branch=master)](https://travis-ci.org/FamousTools/famous-examples-generator) [![Dependency Status](https://david-dm.org/FamousTools/famous-examples-generator.svg)](https://david-dm.org/FamousTools/famous-examples-generator) [![devDependency Status](https://david-dm.org/FamousTools/famous-examples-generator/dev-status.svg)](https://david-dm.org/FamousTools/famous-examples-generator#info=devDependencies)
 
 ---
 
