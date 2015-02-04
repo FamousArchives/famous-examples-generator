@@ -1,6 +1,6 @@
 {
   "name": "famous-examples-generator",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Generate Templates for Famous Examples",
   "main": "./lib/index.js",
   "repository": {
